@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Note</title>
+</head>
+<body>
+<a href="/create-blog">Create new Note</a>
+<h1 style="font-size: 40px">Note of Tran Hieu</h1>
+<table style="width: 900px;height: 600px;font-size: 20px;text-align: center;background: #4CAF50" border="1">
+    <tr>
+        <th>STT</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Detail</th>
+    </tr>
+    <th:block th:each="notes : ${inote}">
+        <tr>
+            <td th:text="${notes.getId()}"></td>
+            <td th:text="${notes.getTitle()}"></td>
+            <td th:text="${notes.getContent()}"></td>
+            <td><a th:href="@{/edit-note/__${notes.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-note/__${notes.id}__ }">Delete</a></td>
+            <td><a th:href="@{/detail-note/__${notes.id}__ }">Detail</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
